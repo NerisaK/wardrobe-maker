@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <section>
         <keep-alive>
             <div v-if="showColors">
                 <p v-if="colorsNotSet"><strong>
@@ -31,7 +31,7 @@
                     ></div>
                 </div>
                 <button
-                    class="btn btn-success my-3 ml-2"
+                    class="btn btn-primary my-3 ml-2"
                     @click="showColors = !showColors, showSettings = !showSettings"
                     >
                     Vybrat nové barvy
@@ -82,8 +82,14 @@
                 >
                 Uložit změny
             </button>
+            <button
+                class="btn btn-danger ml-2"
+                @click.prevent="keepColors(), showColors = !showColors, showSettings = !showSettings"
+                >
+                Zrušit
+            </button>
         </form>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -112,7 +118,10 @@ export default {
     methods: {
         changeColors(){
             this.colors = this.newColors.slice();
-        }
+        },
+        keepColors(){
+            this.newColors = this.colors.slice();
+        },
     }    
 }
 </script>
