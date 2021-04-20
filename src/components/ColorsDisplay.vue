@@ -39,7 +39,8 @@
             </div>
         </keep-alive>
         <form v-if="showSettings">
-            <h5>Hlavní barvy (akcenty):</h5>
+            <h4 class="mb-4">Nastavení barev</h4>
+            <p>Hlavní barvy (akcenty):</p>
             <div>
                 <input
                     type="color"
@@ -60,7 +61,7 @@
                     v-model.lazy="newColors[2]"
                 />
             </div>
-            <h5>Neutrální barvy (doplňkové):</h5>
+            <p>Neutrální barvy (doplňkové):</p>
             <div>
                 <input
                     type="color"

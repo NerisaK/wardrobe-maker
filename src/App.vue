@@ -41,11 +41,11 @@ export default {
   html {font-size: 1.1rem}
 
   .bg-orange{background-color: #ffc168;}
-  .bg-neutral{background-color: #e6e9e2}
+  .bg-neutral{background-color: #e6e8e3}
   .bg-grey{background-color:#3C403D}
 
   section{
-    background-color: #edf0ea;
+    background-color: #edefeb;
     padding: 40px 30px;
     margin-bottom: 30px;
     border-radius: 5px;
