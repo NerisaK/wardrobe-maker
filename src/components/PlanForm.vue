@@ -16,7 +16,14 @@
                 </span>
             </p>
         </div>
-        <button class="btn btn-success ml-3" @click.prevent="clearForm(), $emit('hide')">Uložit</button>
+        <button class="btn btn-success ml-3"
+            @click.prevent="savePlan(), $emit('hide')">
+                uložit
+        </button>
+        <button class="btn btn-danger ml-3"
+            @click.prevent="clearForm(), $emit('hide')">
+                zrušit
+        </button>
     </form>
 </template>
 
@@ -51,6 +58,15 @@ export default {
             for (let key in this.planFormData){
                 this.planFormData[key].quantity = 0;
             }
+        },
+        savePlan(){
+            const newList = {};
+            for (const key in this.planFormData) {
+               if (this.planFormData[key].quantity !== 0){
+                   newList[key] = this.planFormData[key];
+               } 
+            }
+            this.$emit('planChanged', newList);
         },
     }
 }

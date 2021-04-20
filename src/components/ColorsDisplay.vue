@@ -6,28 +6,28 @@
                     Začni výběrem hlavních barev pro svůj šatník!
                 </strong></p>
                 <h3 class="mb-4" v-if="!colorsNotSet">Tvoje barvy</h3>
-                <div class="palette-three">
+                <div class="palette-three" v-if="!colorsNotSet">
                     <div
                         class="color"
-                        :style="{ backgroundColor: colors[0] }"
+                        :style="{ backgroundColor: userColors[0] }"
                     ></div>
                     <div
                         class="color"
-                        :style="{ backgroundColor: colors[1] }"
+                        :style="{ backgroundColor: userColors[1] }"
                     ></div>
                     <div
                         class="color"
-                        :style="{ backgroundColor: colors[2] }"
+                        :style="{ backgroundColor: userColors[2] }"
                     ></div>
                 </div>
-                <div class="palette-two">
+                <div class="palette-two" v-if="!colorsNotSet">
                     <div
                         class="color"
-                        :style="{ backgroundColor: colors[3] }"
+                        :style="{ backgroundColor: userColors[3] }"
                     ></div>
                     <div
                         class="color"
-                        :style="{ backgroundColor: colors[4] }"
+                        :style="{ backgroundColor: userColors[4] }"
                     ></div>
                 </div>
                 <button
@@ -95,18 +95,14 @@
 
 <script>
 export default {
+    props: {
+        userColors: Array,
+        colorsNotSet: Boolean,
+    },
     data(){
-        return{
-            colorsNotSet: false,
+        return{            
             showColors: true,
             showSettings: false,
-            colors: [
-                "#C57C7C",
-                "#768A3D",
-                "#7A1A1A",
-                "#4b3520",
-                "#ffffff"
-            ],
             newColors: [
                 "#C57C7C",
                 "#768A3D",
@@ -118,10 +114,14 @@ export default {
     },
     methods: {
         changeColors(){
-            this.colors = this.newColors.slice();
+            let colors = this.newColors.slice();
+            this.$emit('colorsChanged', colors);
+            if (this.colorsNotSet === true) {
+                this.$emit('choseColors')
+            }
         },
         keepColors(){
-            this.newColors = this.colors.slice();
+            this.newColors = this.userColors.slice();
         },
     }    
 }
