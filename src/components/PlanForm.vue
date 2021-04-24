@@ -1,8 +1,6 @@
 <template>
     <form>
-        <h4 class="mb-4">Nový plán</h4>
-        <label for="planName">Název plánu:</label>
-        <input type="text" name="planName" id="planName" placeholder="Můj první plán" required>
+        <h4 class="mb-4">Nový plán</h4>        
         <p class="mt-3">Zadej počet:</p>
         <div v-for="(value, name) in planFormData" :key="name">
             <p class="clothes">

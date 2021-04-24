@@ -103,13 +103,7 @@ export default {
         return{            
             showColors: true,
             showSettings: false,
-            newColors: [
-                "#C57C7C",
-                "#768A3D",
-                "#7A1A1A",
-                "#4b3520",
-                "#ffffff"
-            ],
+            newColors: this.userColors,
         }
     },
     methods: {

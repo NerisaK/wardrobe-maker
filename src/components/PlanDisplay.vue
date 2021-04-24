@@ -47,7 +47,7 @@ export default {
     },
     computed: {
         hasPlan(){
-            return true
+            return Object.keys(this.userPlan).length > 0;  
         },
     },
 }

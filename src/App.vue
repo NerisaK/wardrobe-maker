@@ -15,7 +15,7 @@
       <shopping-list-display />
       <wardrobe-display />
     </main>
-    <app-footer />
+    <app-footer @deleteData="deleteData"/>
   </div>
 </template>
 
@@ -69,6 +69,19 @@ export default {
         shoppingList: {},
         wardrobe: [],
       },
+    }
+  },
+  methods: {
+    deleteData(){
+      this.user.colorsNotSet = true;
+      this.user.colors.length = 0;
+      for (let i = 1; i < 6; i++){
+        this.user.colors.push("#ffffff")
+      }
+      let keys = Object.keys(this.user.plan);
+      for (let key of keys){
+        delete this.user.plan[key];
+      }
     }
   }
 }
